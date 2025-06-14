@@ -2,21 +2,21 @@ import requests
 import json
 from colorama import Fore, Style, init
 
-init(autoreset=True)  # Menginisialisasi Colorama
+init(autoreset=True)  # Initializes Colorama
 
 def print_header():
-    # Logo atau header yang ingin ditampilkan
+    # Logo or header you want to display
     print(Fore.CYAN + """
     ===========================================
                   Open AI Termux
-     Pembuatan Dibantu Oleh : ChatGPT , aemt.me
+      Created With Help From: ChatGPT, aemt.me
     ===========================================
     """)
 
 def send_text():
     print_header()
     while True:
-        text_input = input("Masukkan teks yang ingin dikirim: ")
+        text_input = input("Enter the text you want to send: ")
         url = "https://aemt.me/openai"
         params = {'text': text_input}
         response = requests.get(url, params=params)
@@ -26,8 +26,8 @@ def send_text():
         
         # Check if the status is true and 'result' exists in the data
         if data.get('status') and 'result' in data:
-            print(Fore.GREEN + data['result'])  # Teks berwarna hijau
+            print(Fore.GREEN + data['result'])  # Text in green
         else:
-            print(Fore.RED + "Gagal mendapatkan respon yang valid.")  # Teks berwarna merah
+            print(Fore.RED + "Failed to get a valid response.")  # Text in red
 
 send_text()
